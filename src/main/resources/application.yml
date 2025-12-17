@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/hr
+    username: hr
+    password: 123456
+
+  mybatis-plus:
+    configuration:
+      # PostgreSQL ???????????????
+      map-underscore-to-camel-case: true
+      # ???? SQL????????????
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # ??????
+    type-aliases-package: cn.cloverclc.entity
