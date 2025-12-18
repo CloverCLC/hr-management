@@ -1,0 +1,38 @@
+#查询全部
+GET http://localhost:8080/emp
+Accept: application/json
+###
+#通过empno查询
+GET http://localhost:8080/emp/8010
+Accept: application/json
+###
+POST http://localhost:8080/emp/add
+Content-Type: application/json
+Accept: application/json
+
+{
+  "ename": "张三",
+  "job": "职员",
+  "mgr": 7902,
+  "sal": 3000.0,
+  "comm": 300.0
+}
+###
+DELETE http://localhost:8080/emp/del/8015
+Accept: application/json
+###
+PUT http://localhost:8080/emp/update
+Content-Type: application/json
+Accept: application/json
+
+{
+  "empno": 8010,
+  "ename": "韦六",
+  "status": "在职",
+  "job": "实习生",
+  "mgr": 7783,
+  "sal": 2000.0,
+  "comm": 100,
+  "deptno": 20
+}
+

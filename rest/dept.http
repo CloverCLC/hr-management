@@ -1,0 +1,32 @@
+#检索所有部门
+GET http://localhost:8080/dept
+Accept: application/json
+###
+#根据deptno检索
+GET http://localhost:8080/dept/20
+Accept: application/json
+###
+#添加部门
+POST http://localhost:8080/dept/add
+Content-Type: application/json
+Accept: application/json
+
+{
+  "dname": "test",
+  "loc": "邯郸"
+}
+###
+#删除部门
+DELETE http://localhost:8080/dept/del/90
+Accept: application/json
+###
+#更新部门
+PUT http://localhost:8080/dept/update
+Content-Type: application/json
+Accept: application/json
+
+{
+  "deptno": 20,
+  "dname": "研发部",
+  "loc": "邯郸"
+}

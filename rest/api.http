@@ -1,9 +1,0 @@
-#查询全部
-GET http://localhost:8080/emp
-Accept: application/json
-###
-#通过empno查询
-GET http://localhost:8080/emp/8010
-Accept: application/json
-###
-

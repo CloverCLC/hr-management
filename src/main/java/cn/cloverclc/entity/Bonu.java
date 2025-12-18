@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class Bone {
+public class Bonu {
     private int id;
-    private int eno;
+    private int empno;
     private Double comm;
-    private Date bdata;
+    private Date bonus_data;
 }

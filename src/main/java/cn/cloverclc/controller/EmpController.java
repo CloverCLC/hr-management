@@ -12,15 +12,30 @@ import java.util.List;
 public class EmpController {
     @Autowired
     private EmpService empService;
+
     @GetMapping
     public List<Employee> listAll() {
-        // 兜底：防止 Service 返回 null
-        List<Employee> list = empService.listAllEmployees();
-        return list == null ? List.of() : list;
+        return empService.getAllEmployee();
     }
+
     @GetMapping("/{id}")
     public Employee getEmpById(@PathVariable Integer id) {
         return empService.getEmployeeById(id);
+    }
+
+    @PostMapping("/add")
+    public boolean addEmp(@RequestBody Employee emp) {
+        return empService.addEmployee(emp);
+    }
+
+    @DeleteMapping("/del/{id}")
+    public boolean delEmp(@PathVariable Integer id) {
+        return empService.removeEmployeeById(id);
+    }
+
+    @PutMapping("/update")
+    public boolean updateEmp(@RequestBody Employee emp) {
+        return empService.updateEmployee(emp);
     }
 
 }

@@ -4,38 +4,51 @@ DROP TABLE IF EXISTS emp;
 DROP TABLE IF EXISTS dept;
 DROP TABLE IF EXISTS salgrade;
 
+-- 创建序列
+CREATE SEQUENCE dept_deptno_seq
+    START WITH 0
+    INCREMENT BY 10  -- 步长10
+    MINVALUE 0
+    NO MAXVALUE
+    CACHE 1;
+
 -- 创建部门表
 CREATE TABLE dept (
-  deptno SERIAL PRIMARY KEY,
-  dname  VARCHAR(20),
-  loc    VARCHAR(20)
+    deptno INT PRIMARY KEY DEFAULT nextval('dept_deptno_seq'),  -- 关联序列
+    dname  VARCHAR(20),
+    loc    VARCHAR(20)
 );
 
 -- 插入部门数据
-INSERT INTO dept (deptno, dname, loc) VALUES
-  (0, '待分配', '未知'),
-  (10, '财务部', '北京'),
-  (20, '研发部', '深圳'),
-  (30, '销售部', '上海'),
-  (40, '运营部', '广州'),
-  (50, '研究院', '杭州'),
-  (60, '人事部', '成都');
+INSERT INTO dept (dname, loc) VALUES
+    ('待分配', '未知'),
+    ('财务部', '北京'),
+    ('研发部', '深圳'),
+    ('销售部', '上海'),
+    ('运营部', '广州'),
+    ('研究院', '杭州'),
+    ('人事部', '成都');
+
+-- 测试
+-- SELECT deptno, dname, loc FROM dept;
 
 -- 创建员工状态枚举类型
 CREATE TYPE emp_status AS ENUM ('在职', '待入职', '暂停', '请假', '离职');
-
 -- 创建员工表
 CREATE TABLE emp (
     empno    SERIAL PRIMARY KEY,
     ename    VARCHAR(10),
-    status   emp_status DEFAULT '在职',
+    status   emp_status DEFAULT '待入职',
     job      VARCHAR(20),
     mgr      INTEGER DEFAULT 0,
-    hiredate TIMESTAMP,
+    hiredate TIMESTAMP DEFAULT (CURRENT_DATE AT TIME ZONE 'Asia/Shanghai')::DATE,
     sal      DECIMAL(7,2),
     comm     DECIMAL(7,2),
-    deptno   INTEGER
+    deptno   INTEGER DEFAULT 0
 );
+
+ALTER TABLE emp
+    ALTER COLUMN deptno SET DEFAULT 0;
 
 -- 插入员工数据
 INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES
@@ -77,6 +90,8 @@ INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno, status) VA
 INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno, status) VALUES
     (8010, '韦六', '职员', 7782, '2020-05-15', 1200.00, NULL, 10, '暂停');
 
+
+SELECT empno from emp;
 -- 创建薪资等级表
 CREATE TABLE salgrade (
     grade SERIAL PRIMARY KEY,
@@ -95,11 +110,11 @@ INSERT INTO salgrade (grade, losal, hisal) VALUES
 
 -- 创建奖金表
 CREATE TABLE bonus (
-                       id          SERIAL PRIMARY KEY,
-                       empno       INTEGER NOT NULL,
-                       comm        DECIMAL(7,2),
-                       bonus_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                       FOREIGN KEY (empno) REFERENCES emp(empno) ON DELETE CASCADE
+    id          SERIAL PRIMARY KEY,
+    empno       INTEGER NOT NULL,
+    comm        DECIMAL(7,2),
+    bonus_date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (empno) REFERENCES emp(empno) ON DELETE CASCADE
 );
 
 -- 插入奖金数据

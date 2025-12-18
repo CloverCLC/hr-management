@@ -15,6 +15,7 @@ import java.util.Date;
 public class Employee {
     private Integer empno;
     private String ename;
+    private String status;
     private String job;
     private Integer mgr;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
