@@ -13,3 +13,9 @@ spring:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # ??????
     type-aliases-package: cn.cloverclc.entity
+logging:
+  file:
+    name: logs/running.log
+  level:
+    root: warn
+    cn.cloverclc : info

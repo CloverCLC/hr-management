@@ -20,7 +20,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public Department getDepartmentById(int id) {
+    public Department getDepartmentById(Integer id) {
         return departmentDao.getDepartmentByDeptno(id);
     }
 
@@ -31,7 +31,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public boolean removeDepartment(int id) {
+    public boolean removeDepartment(Integer id) {
         return departmentDao.deleteDepartment(id);
     }
 

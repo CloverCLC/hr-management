@@ -8,13 +8,13 @@ public interface DeptService {
     List<Department> getAllDepartment();
 
 
-    Department getDepartmentById(int id);
+    Department getDepartmentById(Integer id);
 
 
     boolean addDepartment(Department department);
 
 
-    boolean removeDepartment(int id);
+    boolean removeDepartment(Integer id);
 
 
     boolean updateDepartment(Department department);

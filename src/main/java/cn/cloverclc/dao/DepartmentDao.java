@@ -14,7 +14,7 @@ public interface DepartmentDao extends BaseMapper<Department> {
     List<Department> getAllDepartment();
 
     @Select("SELECT * FROM dept WHERE deptno = #{deptno}")
-    Department getDepartmentByDeptno(int deptno);
+    Department getDepartmentByDeptno(Integer deptno);
 
     @Insert("INSERT INTO dept(dname,loc) VALUES(#{dname},#{loc})")
     boolean addDepartment(Department department);
@@ -23,6 +23,6 @@ public interface DepartmentDao extends BaseMapper<Department> {
     boolean updateDepartment(Department department);
 
     @Delete("DELETE FROM dept WHERE deptno=#{deptno}")
-    boolean deleteDepartment(int deptno);
+    boolean deleteDepartment(Integer deptno);
 
 }
