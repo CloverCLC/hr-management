@@ -3,6 +3,7 @@
 ### 完成的功能
 1. 员工管理基本功能实现
 2. 部门管理基本功能实现
+3. 统一了返回结构
 ### 问题
 1. MyBatis-Plus 与 Spring Boot 3.x 版本兼容性问题
    参考https://blog.csdn.net/qq_57682309/article/details/149295836解决

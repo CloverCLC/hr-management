@@ -1,3 +1,24 @@
-2025-12-18T18:22:59.354+08:00  INFO 6276 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 6276 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
-2025-12-18T18:22:59.355+08:00  INFO 6276 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
-2025-12-18T18:23:00.219+08:00  INFO 6276 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.134 seconds (process running for 1.451)
+2025-12-19T11:49:15.176+08:00  INFO 94700 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 94700 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2025-12-19T11:49:15.179+08:00  INFO 94700 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2025-12-19T11:49:16.268+08:00  INFO 94700 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.38 seconds (process running for 1.941)
+2025-12-19T11:49:24.243+08:00  INFO 94700 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 开始获取所有员工列表
+2025-12-19T11:49:24.275+08:00  INFO 94700 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 获取员工列表完成，共查询到 32 条员工记录
+2025-12-19T12:00:01.887+08:00  INFO 4032 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 4032 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2025-12-19T12:00:01.889+08:00  INFO 4032 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2025-12-19T12:00:02.837+08:00  INFO 4032 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.209 seconds (process running for 1.529)
+2025-12-19T12:04:55.827+08:00  INFO 82580 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 82580 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2025-12-19T12:04:55.829+08:00  INFO 82580 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2025-12-19T12:04:56.737+08:00  INFO 82580 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.176 seconds (process running for 1.496)
+2025-12-19T12:05:02.583+08:00  INFO 82580 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 开始查询empno为 8010 的员工
+2025-12-19T12:05:02.611+08:00  INFO 82580 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 查询完成
+2025-12-19T12:05:20.215+08:00  INFO 82580 --- [http-nio-8080-exec-2] c.cloverclc.service.Impl.EmpServiceImpl  : 开始查询empno为 8015 的员工
+2025-12-19T12:05:20.216+08:00  INFO 82580 --- [http-nio-8080-exec-2] c.cloverclc.service.Impl.EmpServiceImpl  : 查询完成
+2025-12-19T12:07:53.582+08:00  INFO 115396 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 115396 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2025-12-19T12:07:53.584+08:00  INFO 115396 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2025-12-19T12:07:54.492+08:00  INFO 115396 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.195 seconds (process running for 1.525)
+2025-12-19T12:07:59.250+08:00  INFO 115396 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 开始查询empno为 8015 的员工
+2025-12-19T12:07:59.271+08:00  INFO 115396 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 未查询到empno为 8015 的员工
+2025-12-19T12:07:59.271+08:00  INFO 115396 --- [http-nio-8080-exec-1] c.cloverclc.service.Impl.EmpServiceImpl  : 查询完成
+2025-12-19T12:08:13.804+08:00  INFO 115396 --- [http-nio-8080-exec-2] c.cloverclc.service.Impl.EmpServiceImpl  : 开始查询empno为 8014 的员工
+2025-12-19T12:08:13.808+08:00  INFO 115396 --- [http-nio-8080-exec-2] c.cloverclc.service.Impl.EmpServiceImpl  : 成功查询到empno为 8014 的员工
+2025-12-19T12:08:13.808+08:00  INFO 115396 --- [http-nio-8080-exec-2] c.cloverclc.service.Impl.EmpServiceImpl  : 查询完成

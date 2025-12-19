@@ -18,13 +18,13 @@ public interface EmployeeDao extends BaseMapper<Employee> {
 
 //    添加员工
     @Insert("INSERT INTO emp (ename,job,mgr,sal,comm) VALUES (#{ename},#{job},#{mgr},#{sal},#{comm})")
-    boolean insertEmployee(Employee employee);
+    Integer insertEmployee(Employee employee);
 
 //    更新字段
     @Update("UPDATE emp SET status=CAST(#{status} AS emp_status),job=#{job},mgr=#{mgr},sal=#{sal},comm=#{comm},deptno=#{deptno} WHERE empno = #{empno}")
-    boolean updateEmployee(Employee employee);
+    Integer updateEmployee(Employee employee);
 
 //    根据empno删除员工
     @Delete("DELETE FROM emp WHERE empno=#{empno}")
-    boolean deleteEmployeeByEmpno(Integer empno);
+    Integer deleteEmployeeByEmpno(Integer empno);
 }

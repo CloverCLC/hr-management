@@ -13,13 +13,13 @@ public interface EmpService {
     Employee getEmployeeById(Integer id);
 
 //    添加员工
-    boolean addEmployee(Employee employee);
+    Integer addEmployee(Employee employee);
 
 //    删除员工
-    boolean removeEmployeeById(Integer id);
+    Integer removeEmployeeById(Integer id);
 
 //    更新员工
-    boolean updateEmployee(Employee employee);
+    Integer updateEmployee(Employee employee);
 
 
 }

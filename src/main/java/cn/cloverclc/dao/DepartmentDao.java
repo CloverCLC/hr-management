@@ -17,12 +17,12 @@ public interface DepartmentDao extends BaseMapper<Department> {
     Department getDepartmentByDeptno(Integer deptno);
 
     @Insert("INSERT INTO dept(dname,loc) VALUES(#{dname},#{loc})")
-    boolean addDepartment(Department department);
+    Integer addDepartment(Department department);
 
     @Update("UPDATE dept SET dname=#{dname},loc=#{loc} WHERE deptno = #{deptno};")
-    boolean updateDepartment(Department department);
+    Integer updateDepartment(Department department);
 
     @Delete("DELETE FROM dept WHERE deptno=#{deptno}")
-    boolean deleteDepartment(Integer deptno);
+    Integer deleteDepartment(Integer deptno);
 
 }

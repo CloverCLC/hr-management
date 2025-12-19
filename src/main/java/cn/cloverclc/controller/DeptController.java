@@ -2,9 +2,10 @@ package cn.cloverclc.controller;
 
 import cn.cloverclc.entity.Department;
 import cn.cloverclc.service.Interface.DeptService;
+import cn.cloverclc.common.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,23 +15,28 @@ public class DeptController {
     private DeptService deptService;
 
     @GetMapping
-    public List<Department> listAll(){
-        return deptService.getAllDepartment();
+    public Result<List<Department>> listAll(){
+        List<Department> departmentsList = deptService.getAllDepartment();
+        return Result.success(departmentsList);
     }
     @GetMapping("/{id}")
-    public Department getById(@PathVariable int id){
-        return deptService.getDepartmentById(id);
+    public Result<Department> getById(@PathVariable int id){
+        Department department = deptService.getDepartmentById(id);
+        return Result.success(department);
     }
     @PostMapping("/add")
-    public boolean add(@RequestBody Department dept){
-        return deptService.addDepartment(dept);
+    public Result<Integer> add(@RequestBody Department dept){
+        Integer result = deptService.addDepartment(dept);
+        return Result.success(result);
     }
     @PutMapping("/update")
-    public boolean update(@RequestBody Department dept){
-        return deptService.updateDepartment(dept);
+    public Result<Integer> update(@RequestBody Department dept){
+        Integer result = deptService.updateDepartment(dept);
+        return Result.success(result);
     }
     @DeleteMapping("/del/{id}")
-    public boolean delete(@PathVariable int id){
-        return deptService.removeDepartment(id);
+    public Result<Integer> delete(@PathVariable int id){
+        Integer result = deptService.removeDepartment(id);
+        return Result.success(result);
     }
 }

@@ -2,9 +2,10 @@ package cn.cloverclc.controller;
 
 import cn.cloverclc.entity.Employee;
 import cn.cloverclc.service.Interface.EmpService;
+import cn.cloverclc.common.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,28 +15,33 @@ public class EmpController {
     private EmpService empService;
 
     @GetMapping
-    public List<Employee> listAll() {
-        return empService.getAllEmployee();
+    public Result<List<Employee>> listAll() {
+        List<Employee> employeeList = empService.getAllEmployee();
+        return Result.success(employeeList);
     }
 
     @GetMapping("/{id}")
-    public Employee getEmpById(@PathVariable Integer id) {
-        return empService.getEmployeeById(id);
+    public Result<Employee> getEmpById(@PathVariable Integer id) {
+        Employee employee = empService.getEmployeeById(id);
+        return Result.success(employee);
     }
 
     @PostMapping("/add")
-    public boolean addEmp(@RequestBody Employee emp) {
-        return empService.addEmployee(emp);
+    public Result<Integer> addEmp(@RequestBody Employee emp) {
+        int result = empService.addEmployee(emp);
+        return Result.success(result);
     }
 
     @DeleteMapping("/del/{id}")
-    public boolean delEmp(@PathVariable Integer id) {
-        return empService.removeEmployeeById(id);
+    public Result<Integer> delEmp(@PathVariable Integer id) {
+        int result = empService.removeEmployeeById(id);
+        return Result.success(result);
     }
 
     @PutMapping("/update")
-    public boolean updateEmp(@RequestBody Employee emp) {
-        return empService.updateEmployee(emp);
+    public Result<Integer> updateEmp(@RequestBody Employee emp) {
+        int result = empService.updateEmployee(emp);
+        return Result.success(result);
     }
 
 }

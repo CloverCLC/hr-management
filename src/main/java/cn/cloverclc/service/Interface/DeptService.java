@@ -5,18 +5,15 @@ import cn.cloverclc.entity.Department;
 import java.util.List;
 
 public interface DeptService {
-    List<Department> getAllDepartment();
 
+    List<Department> getAllDepartment();
 
     Department getDepartmentById(Integer id);
 
+    Integer addDepartment(Department department);
 
-    boolean addDepartment(Department department);
+    Integer removeDepartment(Integer id);
 
-
-    boolean removeDepartment(Integer id);
-
-
-    boolean updateDepartment(Department department);
+    Integer updateDepartment(Department department);
 
 }
