@@ -1,15 +1,27 @@
 package cn.cloverclc.dao;
-import cn.cloverclc.entity.Employee;
+import cn.cloverclc.model.entity.Employee;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.List;
 
 @Mapper
 public interface EmployeeDao extends BaseMapper<Employee> {
-//    检索全部
 
-    @Select("SELECT * FROM emp")
+//    检索全部
+    @Select("SELECT\n" +
+            "  e.empno,\n" +
+            "  e.ename,\n" +
+            "  e.job,\n" +
+            "  e.mgr,\n" +
+            "  e.hiredate,\n" +
+            "  e.sal,\n" +
+            "  e.comm,\n" +
+            "  COALESCE(e.deptno,0) AS deptno,\n" +
+            "  d.dname AS dname\n" +
+            "FROM emp e \n" +
+            "LEFT JOIN dept d on e.deptno = d.deptno;")
     List<Employee> getAllEmployee();
 
 //    根据empno检索

@@ -1,6 +1,6 @@
 package cn.cloverclc.service.Interface;
 
-import cn.cloverclc.entity.Department;
+import cn.cloverclc.model.entity.Department;
 
 import java.util.List;
 

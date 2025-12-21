@@ -1,7 +1,7 @@
 package cn.cloverclc.service.Impl;
 
 import cn.cloverclc.dao.EmployeeDao;
-import cn.cloverclc.entity.Employee;
+import cn.cloverclc.model.entity.Employee;
 import cn.cloverclc.service.Interface.EmpService;
 
 import org.slf4j.Logger;
@@ -25,6 +25,7 @@ public class EmpServiceImpl implements EmpService {
         log.info("开始获取员工列表");
         try {
             List<Employee> employees = employeeDao.getAllEmployee();
+
             log.info("获取员工列表完成，共查询到 {} 条员工记录", employees.size());
             log.info("Done");
             return employees;

@@ -1,7 +1,7 @@
 package cn.cloverclc.service.Impl;
 
 import cn.cloverclc.dao.DepartmentDao;
-import cn.cloverclc.entity.Department;
+import cn.cloverclc.model.entity.Department;
 import cn.cloverclc.service.Interface.DeptService;
 
 import org.slf4j.Logger;

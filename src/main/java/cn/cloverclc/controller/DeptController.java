@@ -1,6 +1,6 @@
 package cn.cloverclc.controller;
 
-import cn.cloverclc.entity.Department;
+import cn.cloverclc.model.entity.Department;
 import cn.cloverclc.service.Interface.DeptService;
 import cn.cloverclc.common.Result;
 
@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dept")
+@CrossOrigin(origins = "http://localhost:8081")
 public class DeptController {
     @Autowired
     private DeptService deptService;

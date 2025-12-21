@@ -1,21 +1,16 @@
-package cn.cloverclc.entity;
+package cn.cloverclc.model.dto.response;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("emp")
-public class Employee {
-    @TableId(type = IdType.AUTO)
+public class EmpResponseDTO {
     private Integer empno;
     private String ename;
     private String status;
@@ -26,5 +21,5 @@ public class Employee {
     private Double sal;
     private Double comm;
     private Integer deptno;
-
+    private String dname;
 }

@@ -1,6 +1,6 @@
 package cn.cloverclc.controller;
 
-import cn.cloverclc.entity.Employee;
+import cn.cloverclc.model.entity.Employee;
 import cn.cloverclc.service.Interface.EmpService;
 import cn.cloverclc.common.Result;
 
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/emp")
 public class EmpController {
     @Autowired

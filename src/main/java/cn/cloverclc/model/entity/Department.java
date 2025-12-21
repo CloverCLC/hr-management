@@ -1,4 +1,4 @@
-package cn.cloverclc.entity;
+package cn.cloverclc.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("salgrade")
-public class Salgrade {
+@TableName("dept")
+public class Department {
     @TableId(type = IdType.AUTO)
-    private Integer grade;
-    private Integer losal;
-    private Integer hisal;
+    private Integer deptno;
+    private String dname;
+    private String loc;
+
 }

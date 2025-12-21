@@ -1,6 +1,6 @@
 package cn.cloverclc.service.Interface;
 
-import cn.cloverclc.entity.Employee;
+import cn.cloverclc.model.entity.Employee;
 
 import java.util.List;
 
