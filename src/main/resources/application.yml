@@ -19,3 +19,5 @@ logging:
   level:
     root: warn
     cn.cloverclc : info
+server:
+  port: 8080

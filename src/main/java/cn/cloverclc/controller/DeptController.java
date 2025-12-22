@@ -1,9 +1,10 @@
 package cn.cloverclc.controller;
 
 import cn.cloverclc.model.entity.Department;
-import cn.cloverclc.service.Interface.DeptService;
+import cn.cloverclc.service.DeptService;
 import cn.cloverclc.common.Result;
 
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,32 +13,31 @@ import java.util.List;
 @RequestMapping("/dept")
 @CrossOrigin(origins = "http://localhost:8081")
 public class DeptController {
-    @Autowired
+    @Resource
     private DeptService deptService;
-
     @GetMapping
     public Result<List<Department>> listAll(){
-        List<Department> departmentsList = deptService.getAllDepartment();
+        List<Department> departmentsList = deptService.findAll();
         return Result.success(departmentsList);
     }
     @GetMapping("/{id}")
     public Result<Department> getById(@PathVariable int id){
-        Department department = deptService.getDepartmentById(id);
+        Department department = deptService.findById(id);
         return Result.success(department);
     }
     @PostMapping("/add")
     public Result<Integer> add(@RequestBody Department dept){
-        Integer result = deptService.addDepartment(dept);
+        Integer result = deptService.insert(dept);
         return Result.success(result);
     }
     @PutMapping("/update")
     public Result<Integer> update(@RequestBody Department dept){
-        Integer result = deptService.updateDepartment(dept);
+        Integer result = deptService.update(dept);
         return Result.success(result);
     }
     @DeleteMapping("/del/{id}")
     public Result<Integer> delete(@PathVariable int id){
-        Integer result = deptService.removeDepartment(id);
+        Integer result = deptService.delete(id);
         return Result.success(result);
     }
 }

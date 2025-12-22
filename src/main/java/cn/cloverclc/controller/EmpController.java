@@ -1,10 +1,10 @@
 package cn.cloverclc.controller;
 
 import cn.cloverclc.model.entity.Employee;
-import cn.cloverclc.service.Interface.EmpService;
+import cn.cloverclc.service.EmpService;
 import cn.cloverclc.common.Result;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -12,36 +12,37 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/emp")
 public class EmpController {
-    @Autowired
+
+    @Resource
     private EmpService empService;
 
     @GetMapping
     public Result<List<Employee>> listAll() {
-        List<Employee> employeeList = empService.getAllEmployee();
+        List<Employee> employeeList = empService.findAll();
         return Result.success(employeeList);
     }
 
     @GetMapping("/{id}")
     public Result<Employee> getEmpById(@PathVariable Integer id) {
-        Employee employee = empService.getEmployeeById(id);
+        Employee employee = empService.findById(id);
         return Result.success(employee);
     }
 
     @PostMapping("/add")
     public Result<Integer> addEmp(@RequestBody Employee emp) {
-        int result = empService.addEmployee(emp);
+        int result = empService.insert(emp);
         return Result.success(result);
     }
 
     @DeleteMapping("/del/{id}")
     public Result<Integer> delEmp(@PathVariable Integer id) {
-        int result = empService.removeEmployeeById(id);
+        int result = empService.delete(id);
         return Result.success(result);
     }
 
     @PutMapping("/update")
     public Result<Integer> updateEmp(@RequestBody Employee emp) {
-        int result = empService.updateEmployee(emp);
+        int result = empService.update(emp);
         return Result.success(result);
     }
 
