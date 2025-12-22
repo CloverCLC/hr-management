@@ -25,25 +25,39 @@ public class EmpController {
     @GetMapping("/{id}")
     public Result<Employee> getEmpById(@PathVariable Integer id) {
         Employee employee = empService.findById(id);
+        if (employee == null) {
+            return Result.error("500","员工不存在");
+        }
         return Result.success(employee);
     }
 
     @PostMapping("/add")
-    public Result<Integer> addEmp(@RequestBody Employee emp) {
+    public Result<Void> addEmp(@RequestBody Employee emp) {
         int result = empService.insert(emp);
-        return Result.success(result);
+        if (result >=0) {
+            return Result.success();
+        }
+        return Result.error("添加失败");
+
     }
 
     @DeleteMapping("/del/{id}")
-    public Result<Integer> delEmp(@PathVariable Integer id) {
+    public Result<Void> delEmp(@PathVariable Integer id) {
         int result = empService.delete(id);
-        return Result.success(result);
+        if (result >=0) {
+            return Result.success();
+        }
+        return Result.error("删除失败");
     }
 
     @PutMapping("/update")
-    public Result<Integer> updateEmp(@RequestBody Employee emp) {
+    public Result<Void> updateEmp(@RequestBody Employee emp) {
         int result = empService.update(emp);
-        return Result.success(result);
+        if (result >=0) {
+            return Result.success();
+        }
+        return Result.error("员工不存在或无字段需要更新");
+
     }
 
 }

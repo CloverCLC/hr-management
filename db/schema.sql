@@ -50,6 +50,9 @@ CREATE TABLE emp (
 ALTER TABLE emp
     ALTER COLUMN deptno SET DEFAULT 0;
 
+ALTER TABLE emp ADD COLUMN email VARCHAR(50);
+ALTER TABLE emp
+    ADD mobile VARCHAR(20);
 -- 插入员工数据
 INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES
     (7369, '马云',     '职员',     7902, '1980-12-17',  800.00,  NULL,    20),
