@@ -3,7 +3,7 @@ GET http://localhost:8080/dept
 Accept: application/json
 ###
 #根据deptno检索
-GET http://localhost:8080/dept/20
+GET http://localhost:8080/dept/99
 Accept: application/json
 ###
 #添加部门
@@ -17,7 +17,7 @@ Accept: application/json
 }
 ###
 #删除部门
-DELETE http://localhost:8080/dept/del/90
+DELETE http://localhost:8080/dept/del/17
 Accept: application/json
 ###
 #更新部门
@@ -26,7 +26,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "deptno": 20,
+  "deptno": 17,
   "dname": "研发部",
   "loc": "邯郸"
 }

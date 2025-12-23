@@ -28,5 +28,7 @@ public class Employee {
     private Double sal;
     private Double comm;
     private Integer deptno;
+    private String email;
+    private String mobile;
 
 }

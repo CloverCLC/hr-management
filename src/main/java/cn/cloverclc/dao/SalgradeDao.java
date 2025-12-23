@@ -1,0 +1,13 @@
+package cn.cloverclc.dao;
+
+import cn.cloverclc.model.entity.Salgrade;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+
+
+@Mapper
+public interface SalgradeDao extends BaseMapper<Salgrade> {
+
+}
