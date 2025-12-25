@@ -18,13 +18,13 @@ public class EmpController {
 
     @GetMapping
     public Result<List<Employee>> listAll() {
-        List<Employee> employeeList = empService.findAll();
+        List<Employee> employeeList = empService.list();
         return Result.success(employeeList);
     }
 
     @GetMapping("/{id}")
     public Result<Employee> getEmpById(@PathVariable Integer id) {
-        Employee employee = empService.findById(id);
+        Employee employee = empService.getById(id);
         if (employee == null) {
             return Result.error("500","员工不存在");
         }
@@ -33,8 +33,8 @@ public class EmpController {
 
     @PostMapping("/add")
     public Result<Void> addEmp(@RequestBody Employee emp) {
-        int result = empService.insert(emp);
-        if (result >=0) {
+        boolean result = empService.save(emp);
+        if (result) {
             return Result.success();
         }
         return Result.error("添加失败");
@@ -43,8 +43,8 @@ public class EmpController {
 
     @DeleteMapping("/del/{id}")
     public Result<Void> delEmp(@PathVariable Integer id) {
-        int result = empService.delete(id);
-        if (result >=0) {
+        boolean result = empService.removeById(id);
+        if (result) {
             return Result.success();
         }
         return Result.error("删除失败");
@@ -52,8 +52,8 @@ public class EmpController {
 
     @PutMapping("/update")
     public Result<Void> updateEmp(@RequestBody Employee emp) {
-        int result = empService.update(emp);
-        if (result >=0) {
+        boolean result = empService.update(emp);
+        if (result) {
             return Result.success();
         }
         return Result.error("员工不存在或无字段需要更新");
