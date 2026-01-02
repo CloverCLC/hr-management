@@ -3,7 +3,7 @@ GET http://localhost:8080/emp
 Accept: application/json
 ###
 #通过empno查询
-GET http://localhost:8080/emp/8022
+GET http://localhost:8080/emp/8023
 Accept: application/json
 ###
 POST http://localhost:8080/emp/add

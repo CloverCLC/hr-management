@@ -1,10 +1,14 @@
 package cn.cloverclc.controller;
 
+import cn.cloverclc.annotation.LogRecord;
 import cn.cloverclc.model.entity.Employee;
-import cn.cloverclc.service.EmpService;
+
 import cn.cloverclc.common.Result;
 
+import cn.cloverclc.service.Impl.EmpServiceImpl;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import jakarta.annotation.Resource;
+
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -14,15 +18,17 @@ import java.util.List;
 public class EmpController {
 
     @Resource
-    private EmpService empService;
+    private EmpServiceImpl empService;
 
     @GetMapping
+    @LogRecord
     public Result<List<Employee>> listAll() {
         List<Employee> employeeList = empService.list();
         return Result.success(employeeList);
     }
-
+//SOAP/GraphQL/RPC
     @GetMapping("/{id}")
+    @LogRecord
     public Result<Employee> getEmpById(@PathVariable Integer id) {
         Employee employee = empService.getById(id);
         if (employee == null) {
@@ -32,6 +38,7 @@ public class EmpController {
     }
 
     @PostMapping("/add")
+    @LogRecord
     public Result<Void> addEmp(@RequestBody Employee emp) {
         boolean result = empService.save(emp);
         if (result) {
@@ -42,6 +49,7 @@ public class EmpController {
     }
 
     @DeleteMapping("/del/{id}")
+    @LogRecord
     public Result<Void> delEmp(@PathVariable Integer id) {
         boolean result = empService.removeById(id);
         if (result) {
@@ -51,13 +59,21 @@ public class EmpController {
     }
 
     @PutMapping("/update")
+    @LogRecord
     public Result<Void> updateEmp(@RequestBody Employee emp) {
-        boolean result = empService.update(emp);
+        boolean result = empService.updateById(emp);
         if (result) {
             return Result.success();
         }
         return Result.error("员工不存在或无字段需要更新");
 
+    }
+    @GetMapping("/page")
+    @LogRecord
+    public Result<IPage<Employee>> getEmpPage(@RequestParam(defaultValue = "1") Integer current,
+                                              @RequestParam(defaultValue = "10") Integer size) {
+        IPage result = empService.getUserPage(current, size);
+        return Result.success(result);
     }
 
 }

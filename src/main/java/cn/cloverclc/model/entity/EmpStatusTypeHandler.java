@@ -5,7 +5,6 @@ import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
 
-import java.lang.reflect.Type;
 import java.sql.*;
 
 
