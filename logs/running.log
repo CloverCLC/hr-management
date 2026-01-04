@@ -1,1 +1,755 @@
 2026-01-04T08:57:35.638+08:00  WARN 73680 --- [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h46m48s799ms347µs399ns).
+2026-01-04T11:18:01.483+08:00  WARN 73680 --- [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h8m55s950ms536µs400ns).
+2026-01-04T11:35:48.463+08:00  INFO 91664 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 91664 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T11:35:48.465+08:00  INFO 91664 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T11:35:49.824+08:00  INFO 91664 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.63 seconds (process running for 2.104)
+2026-01-04T21:14:47.439+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/del/7369
+2026-01-04T21:14:47.440+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 请求方式：DELETE
+2026-01-04T21:14:47.440+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:14:47.442+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 目标方法名：delEmp
+2026-01-04T21:14:47.442+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 方法参数：[7369]
+2026-01-04T21:14:47.617+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 目标方法 delEmp 正常返回
+2026-01-04T21:14:47.617+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 目标方法 delEmp 执行完毕
+2026-01-04T21:14:47.617+08:00  INFO 91664 --- [http-nio-8080-exec-7] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：178 毫秒
+2026-01-04T21:15:43.747+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:15:43.749+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:15:43.749+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:15:43.749+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:15:43.749+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:15:43.904+08:00 ERROR 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 抛出异常：
+### Error querying database.  Cause: org.postgresql.util.PSQLException: 错误: 字段 e.isdel 不存在
+  位置：531
+### The error may exist in file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT COUNT(*) FROM (SELECT e.empno AS empno, e.ename AS name, d.dname AS dname, (e.sal + COALESCE(SUM(b.comm), 0)) AS totalIncome, s.grade AS salgrade, CASE WHEN e.mobile IS NOT NULL THEN e.mobile ELSE e.emergency_contact->>'phone' END AS contactInfo, array_agg(sub_emp.ename) AS subordinateNames FROM emp e LEFT JOIN dept d ON e.deptno = d.deptno LEFT JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal LEFT JOIN bonus b ON e.empno = b.empno LEFT JOIN emp sub_emp ON e.empno = sub_emp.mgr AND sub_emp.ename IS NOT NULL WHERE e.isdel = FALSE GROUP BY e.empno, e.ename, d.dname, s.grade, e.mobile, e.emergency_contact ORDER BY e.empno) TOTAL
+### Cause: org.postgresql.util.PSQLException: 错误: 字段 e.isdel 不存在
+  位置：531
+; bad SQL grammar []
+2026-01-04T21:15:43.906+08:00  INFO 91664 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:15:43.906+08:00 ERROR 91664 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: org.postgresql.util.PSQLException: 错误: 字段 e.isdel 不存在
+  位置：531
+### The error may exist in file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT COUNT(*) FROM (SELECT e.empno AS empno, e.ename AS name, d.dname AS dname, (e.sal + COALESCE(SUM(b.comm), 0)) AS totalIncome, s.grade AS salgrade, CASE WHEN e.mobile IS NOT NULL THEN e.mobile ELSE e.emergency_contact->>'phone' END AS contactInfo, array_agg(sub_emp.ename) AS subordinateNames FROM emp e LEFT JOIN dept d ON e.deptno = d.deptno LEFT JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal LEFT JOIN bonus b ON e.empno = b.empno LEFT JOIN emp sub_emp ON e.empno = sub_emp.mgr AND sub_emp.ename IS NOT NULL WHERE e.isdel = FALSE GROUP BY e.empno, e.ename, d.dname, s.grade, e.mobile, e.emergency_contact ORDER BY e.empno) TOTAL
+### Cause: org.postgresql.util.PSQLException: 错误: 字段 e.isdel 不存在
+  位置：531
+; bad SQL grammar []] with root cause
+
+org.postgresql.util.PSQLException: 错误: 字段 e.isdel 不存在
+  位置：531
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2736) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2421) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:525) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:435) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:196) ~[postgresql-42.7.8.jar:42.7.8]
+	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:182) ~[postgresql-42.7.8.jar:42.7.8]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-6.3.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-6.3.3.jar:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.15.jar:3.5.15]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61) ~[mybatis-3.5.15.jar:3.5.15]
+	at jdk.proxy2/jdk.proxy2.$Proxy119.query(Unknown Source) ~[na:na]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.15.jar:3.5.15]
+	at com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor.willDoQuery(PaginationInnerInterceptor.java:135) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor.intercept(MybatisPlusInterceptor.java:75) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:59) ~[mybatis-3.5.15.jar:3.5.15]
+	at jdk.proxy2/jdk.proxy2.$Proxy118.query(Unknown Source) ~[na:na]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.15.jar:3.5.15]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2/jdk.proxy2.$Proxy90.selectList(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForIPage(MybatisMapperMethod.java:119) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:84) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2/jdk.proxy2.$Proxy93.selectEmployeePage(Unknown Source) ~[na:na]
+	at cn.cloverclc.service.Impl.EmpServiceImpl.selectEmployeePage(EmpServiceImpl.java:23) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:724) ~[spring-aop-6.2.14.jar:6.2.14]
+	at cn.cloverclc.service.Impl.EmpServiceImpl$$SpringCGLIB$$0.selectEmployeePage(<generated>) ~[classes/:na]
+	at cn.cloverclc.controller.EmpController.getEmpPage(EmpController.java:75) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:360) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AspectJAfterThrowingAdvice.invoke(AspectJAfterThrowingAdvice.java:64) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:57) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AspectJAfterAdvice.invoke(AspectJAfterAdvice.java:49) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:58) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89) ~[spring-aop-6.2.14.jar:6.2.14]
+	at cn.cloverclc.aop.LogAspect.aroundMethod(LogAspect.java:67) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:649) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:631) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:71) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:173) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.14.jar:6.2.14]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.14.jar:6.2.14]
+	at cn.cloverclc.controller.EmpController$$SpringCGLIB$$0.getEmpPage(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.14.jar:6.2.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.49.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.14.jar:6.2.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2026-01-04T21:17:18.741+08:00  INFO 94636 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 94636 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:17:18.742+08:00  INFO 94636 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:17:20.027+08:00  INFO 94636 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.537 seconds (process running for 1.906)
+2026-01-04T21:17:25.622+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:17:25.623+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:17:25.623+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:17:25.623+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:17:25.623+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:17:25.846+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:17:25.846+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:17:25.846+08:00  INFO 94636 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：224 毫秒
+2026-01-04T21:20:25.145+08:00  INFO 98812 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 98812 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:20:25.146+08:00  INFO 98812 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:20:26.335+08:00  INFO 98812 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.476 seconds (process running for 1.82)
+2026-01-04T21:23:24.793+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:23:24.793+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:23:24.793+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:23:24.795+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:23:24.795+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:23:24.852+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:23:24.852+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:23:24.852+08:00  INFO 98812 --- [http-nio-8080-exec-10] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：60 毫秒
+2026-01-04T21:23:26.240+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:23:26.240+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:23:26.240+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:23:26.240+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:23:26.240+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:23:26.250+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:23:26.251+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:23:26.251+08:00  INFO 98812 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：11 毫秒
+2026-01-04T21:24:32.759+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:24:32.760+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:24:32.760+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:24:32.760+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:24:32.760+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:24:32.766+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:24:32.766+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:24:32.767+08:00  INFO 98812 --- [http-nio-8080-exec-4] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：8 毫秒
+2026-01-04T21:29:28.980+08:00  INFO 101204 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 101204 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:29:28.981+08:00  INFO 101204 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:29:30.236+08:00  INFO 101204 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.528 seconds (process running for 1.887)
+2026-01-04T21:30:10.168+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/7566
+2026-01-04T21:30:10.170+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:30:10.170+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:30:10.170+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpById
+2026-01-04T21:30:10.170+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[7566]
+2026-01-04T21:30:10.342+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 正常返回
+2026-01-04T21:30:10.343+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 执行完毕
+2026-01-04T21:30:10.343+08:00  INFO 101204 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：175 毫秒
+2026-01-04T21:32:16.838+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/del/8023
+2026-01-04T21:32:16.838+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求方式：PUT
+2026-01-04T21:32:16.838+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:32:16.838+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法名：delEmp
+2026-01-04T21:32:16.838+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 方法参数：[8023]
+2026-01-04T21:32:16.841+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 delEmp 正常返回
+2026-01-04T21:32:16.841+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 delEmp 执行完毕
+2026-01-04T21:32:16.841+08:00  INFO 101204 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：3 毫秒
+2026-01-04T21:33:09.101+08:00  INFO 22288 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 22288 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:33:09.103+08:00  INFO 22288 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:33:10.299+08:00  INFO 22288 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.455 seconds (process running for 1.776)
+2026-01-04T21:33:14.303+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/7566
+2026-01-04T21:33:14.305+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:33:14.305+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:33:14.305+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpById
+2026-01-04T21:33:14.305+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[7566]
+2026-01-04T21:33:14.505+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 正常返回
+2026-01-04T21:33:14.505+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 执行完毕
+2026-01-04T21:33:14.505+08:00  INFO 22288 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：202 毫秒
+2026-01-04T21:43:39.086+08:00  INFO 100260 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 100260 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:43:39.087+08:00  INFO 100260 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:43:40.342+08:00  INFO 100260 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.54 seconds (process running for 1.898)
+2026-01-04T21:43:53.085+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:43:53.086+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:43:53.086+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:43:53.087+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:43:53.088+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:43:53.331+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:43:53.331+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:43:53.331+08:00  INFO 100260 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：246 毫秒
+2026-01-04T21:45:25.268+08:00  INFO 45732 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 45732 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:45:25.270+08:00  INFO 45732 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:45:26.469+08:00  INFO 45732 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.476 seconds (process running for 1.841)
+2026-01-04T21:45:29.104+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:45:29.104+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:45:29.104+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:45:29.104+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:45:29.106+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:45:29.326+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:45:29.326+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:45:29.326+08:00  INFO 45732 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：223 毫秒
+2026-01-04T21:46:05.988+08:00  INFO 51448 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 51448 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:46:05.990+08:00  INFO 51448 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:46:07.219+08:00  INFO 51448 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.507 seconds (process running for 1.847)
+2026-01-04T21:46:11.285+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:46:11.285+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:46:11.287+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:46:11.287+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:46:11.287+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:46:11.512+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:46:11.512+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:46:11.512+08:00  INFO 51448 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：227 毫秒
+2026-01-04T21:46:19.777+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:46:19.777+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:46:19.777+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:46:19.777+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:46:19.777+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:46:19.786+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:46:19.786+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:46:19.786+08:00  INFO 51448 --- [http-nio-8080-exec-8] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：9 毫秒
+2026-01-04T21:49:35.334+08:00  INFO 44772 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 44772 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:49:35.335+08:00  INFO 44772 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:49:36.638+08:00  INFO 44772 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.581 seconds (process running for 1.939)
+2026-01-04T21:49:46.025+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:49:46.027+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:49:46.027+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:49:46.027+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:49:46.027+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:49:46.266+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:49:46.266+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:49:46.266+08:00  INFO 44772 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：241 毫秒
+2026-01-04T21:51:48.546+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:51:48.546+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:51:48.546+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:51:48.546+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:51:48.546+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:51:48.556+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:51:48.556+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:51:48.556+08:00  INFO 44772 --- [http-nio-8080-exec-6] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：10 毫秒
+2026-01-04T21:54:00.202+08:00  INFO 96384 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 96384 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:54:00.204+08:00  INFO 96384 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:54:01.047+08:00  WARN 96384 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+2026-01-04T21:54:01.068+08:00 ERROR 96384 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:372) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:990) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.8.jar:3.5.8]
+	at cn.cloverclc.HrApp.main(HrApp.java:13) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deptService': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:468) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:605) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:576) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:738) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:272) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:369) ~[spring-context-6.2.14.jar:6.2.14]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1556) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1450) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1541) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 60 common frames omitted
+Caused by: java.io.IOException: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:564) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.afterPropertiesSet(MybatisSqlSessionFactoryBean.java:437) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.getObject(MybatisSqlSessionFactoryBean.java:595) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration.sqlSessionFactory(MybatisPlusAutoConfiguration.java:224) ~[mybatis-plus-spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:172) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 63 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'. Cause: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:127) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:100) ~[mybatis-3.5.15.jar:3.5.15]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:562) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	... 71 common frames omitted
+Caused by: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.mapping.ResultMapping$Builder.validate(ResultMapping.java:153) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.mapping.ResultMapping$Builder.build(ResultMapping.java:140) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.buildResultMapping(MapperBuilderAssistant.java:352) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildResultMappingFromContext(XMLMapperBuilder.java:403) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:286) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:261) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:253) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123) ~[mybatis-3.5.15.jar:3.5.15]
+	... 73 common frames omitted
+
+2026-01-04T21:54:15.818+08:00  INFO 4452 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 4452 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:54:15.819+08:00  INFO 4452 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:54:16.624+08:00  WARN 4452 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+2026-01-04T21:54:16.642+08:00 ERROR 4452 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:372) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:990) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.8.jar:3.5.8]
+	at cn.cloverclc.HrApp.main(HrApp.java:13) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deptService': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:468) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:605) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:576) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:738) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:272) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:369) ~[spring-context-6.2.14.jar:6.2.14]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1556) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1450) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1541) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 60 common frames omitted
+Caused by: java.io.IOException: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:564) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.afterPropertiesSet(MybatisSqlSessionFactoryBean.java:437) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.getObject(MybatisSqlSessionFactoryBean.java:595) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration.sqlSessionFactory(MybatisPlusAutoConfiguration.java:224) ~[mybatis-plus-spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:172) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 63 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'. Cause: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:127) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:100) ~[mybatis-3.5.15.jar:3.5.15]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:562) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	... 71 common frames omitted
+Caused by: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.mapping.ResultMapping$Builder.validate(ResultMapping.java:153) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.mapping.ResultMapping$Builder.build(ResultMapping.java:140) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.buildResultMapping(MapperBuilderAssistant.java:352) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildResultMappingFromContext(XMLMapperBuilder.java:403) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:286) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:261) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:253) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123) ~[mybatis-3.5.15.jar:3.5.15]
+	... 73 common frames omitted
+
+2026-01-04T21:54:22.110+08:00  INFO 95576 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 95576 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:54:22.112+08:00  INFO 95576 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:54:22.913+08:00  WARN 95576 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+2026-01-04T21:54:22.931+08:00 ERROR 95576 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:372) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:990) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.8.jar:3.5.8]
+	at cn.cloverclc.HrApp.main(HrApp.java:13) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deptService': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:468) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:605) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:576) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:738) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:272) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:369) ~[spring-context-6.2.14.jar:6.2.14]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1556) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1450) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1541) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 60 common frames omitted
+Caused by: java.io.IOException: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:564) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.afterPropertiesSet(MybatisSqlSessionFactoryBean.java:437) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.getObject(MybatisSqlSessionFactoryBean.java:595) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration.sqlSessionFactory(MybatisPlusAutoConfiguration.java:224) ~[mybatis-plus-spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:172) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 63 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'. Cause: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:127) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:100) ~[mybatis-3.5.15.jar:3.5.15]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:562) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	... 71 common frames omitted
+Caused by: java.lang.IllegalStateException: No typehandler found for property subordinateNames
+	at org.apache.ibatis.mapping.ResultMapping$Builder.validate(ResultMapping.java:153) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.mapping.ResultMapping$Builder.build(ResultMapping.java:140) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.MapperBuilderAssistant.buildResultMapping(MapperBuilderAssistant.java:352) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildResultMappingFromContext(XMLMapperBuilder.java:403) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:286) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:261) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:253) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123) ~[mybatis-3.5.15.jar:3.5.15]
+	... 73 common frames omitted
+
+2026-01-04T21:55:26.479+08:00  INFO 100828 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 100828 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:55:26.481+08:00  INFO 100828 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:55:27.311+08:00  WARN 100828 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+2026-01-04T21:55:27.328+08:00 ERROR 100828 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'deptController': Injection of resource dependencies failed
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:372) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:990) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.8.jar:3.5.8]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.8.jar:3.5.8]
+	at cn.cloverclc.HrApp.main(HrApp.java:13) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'deptService': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1459) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:468) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:605) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:576) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:738) ~[spring-context-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:272) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:369) ~[spring-context-6.2.14.jar:6.2.14]
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'departmentDao' defined in file [E:\Develop\code\hr-mangerage\target\classes\cn\cloverclc\dao\DepartmentDao.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1556) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1450) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 36 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/baomidou/mybatisplus/autoconfigure/MybatisPlusAutoConfiguration.class]: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1541) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 47 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception with message: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:200) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169) ~[spring-beans-6.2.14.jar:6.2.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 60 common frames omitted
+Caused by: java.io.IOException: Failed to parse mapping resource: 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:564) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.afterPropertiesSet(MybatisSqlSessionFactoryBean.java:437) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.getObject(MybatisSqlSessionFactoryBean.java:595) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration.sqlSessionFactory(MybatisPlusAutoConfiguration.java:224) ~[mybatis-plus-spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:172) ~[spring-beans-6.2.14.jar:6.2.14]
+	... 63 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. The XML location is 'file [E:\Develop\code\hr-mangerage\target\classes\mapper\EmpMapper.xml]'. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'cn.cloverclc.handler.StringListTypeHandler'.  Cause: java.lang.ClassNotFoundException: Cannot find class: cn.cloverclc.handler.StringListTypeHandler
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:127) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:100) ~[mybatis-3.5.15.jar:3.5.15]
+	at com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean.buildSqlSessionFactory(MybatisSqlSessionFactoryBean.java:562) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	... 71 common frames omitted
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'cn.cloverclc.handler.StringListTypeHandler'.  Cause: java.lang.ClassNotFoundException: Cannot find class: cn.cloverclc.handler.StringListTypeHandler
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:103) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.buildResultMappingFromContext(XMLMapperBuilder.java:401) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:286) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:261) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:253) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:123) ~[mybatis-3.5.15.jar:3.5.15]
+	... 73 common frames omitted
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'cn.cloverclc.handler.StringListTypeHandler'.  Cause: java.lang.ClassNotFoundException: Cannot find class: cn.cloverclc.handler.StringListTypeHandler
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:128) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:132) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:101) ~[mybatis-3.5.15.jar:3.5.15]
+	... 78 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Cannot find class: cn.cloverclc.handler.StringListTypeHandler
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:226) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:103) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:322) ~[mybatis-3.5.15.jar:3.5.15]
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:124) ~[mybatis-3.5.15.jar:3.5.15]
+	... 80 common frames omitted
+
+2026-01-04T21:57:11.590+08:00  INFO 85552 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 85552 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:57:11.592+08:00  INFO 85552 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:57:12.772+08:00  INFO 85552 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.435 seconds (process running for 1.763)
+2026-01-04T21:57:17.411+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:57:17.413+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:57:17.413+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:57:17.413+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:57:17.413+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：254 毫秒
