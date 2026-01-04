@@ -14,3 +14,4 @@
    外层删掉写到里面解决
 3. status字段是枚举类型,用cast as解决
    status=CAST(#{status} AS emp_status)
+4. 

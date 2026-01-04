@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cloverclc.dao.EmployeeDao">
+
+    <resultMap id="EmployeeVOMap" type="cn.cloverclc.model.vo.EmployeeVO">
+        <id column="empno" property="empno"/>
+        <result column="name" property="name"/>
+        <result column="dname" property="dname"/>
+        <result column="totalIncome" property="totalIncome"/>
+        <result column="salgrade" property="salgrade"/>
+        <result column="contactInfo" property="contactInfo"/>
+        <!-- 指定自定义类型处理器，映射 List<String> -->
+        <result column="subordinateNames" property="subordinateNames" typeHandler="cn.cloverclc.handler.StringListTypeHandler"/>
+    </resultMap>
+    <select id="selectEmployeePage" resultMap="EmployeeVOMap" >
+        SELECT
+            e.empno AS empno,
+            e.ename AS name,
+            d.dname AS dname,
+            -- 计算总收入(工资+所有奖金)
+            (e.sal + COALESCE(SUM(b.comm), 0)) AS totalIncome,
+            s.grade AS salgrade,
+            -- 联系方式优先取mobile，没有则取紧急联系人电话
+            CASE
+                WHEN e.mobile IS NOT NULL THEN e.mobile
+                ELSE e.emergency_contact ->> 'phone'
+                END AS contactInfo,
+            -- 下级员工姓名(使用字符串聚合)
+            array_agg(sub_emp.ename) AS subordinateNames
+        FROM emp e
+                 LEFT JOIN dept d ON e.deptno = d.deptno
+                 LEFT JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal
+                 LEFT JOIN bonus b ON e.empno = b.empno
+            -- 关联下级员工
+                 LEFT JOIN emp sub_emp ON e.empno = sub_emp.mgr AND sub_emp.ename IS NOT NULL
+            WHERE e.isdel = FALSE
+        GROUP BY e.empno, e.ename, d.dname, s.grade, e.mobile, e.emergency_contact
+        ORDER BY e.empno
+    </select>
+</mapper>

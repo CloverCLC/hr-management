@@ -6,12 +6,20 @@ spring:
     password: 123
 
   mybatis-plus:
+    mapper-locations: classpath:mapper/*.xml
+    type-handlers-package: cn.cloverclc.handler
     configuration:
-      # PostgreSQL ???????????????
       map-underscore-to-camel-case: true
-      # ???? SQL????????????
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    # ??????
+    global-config:
+      db-config:
+        # 逻辑删除字段名（默认：deleted，此处指定为isdel）
+        logic-delete-field: isdel
+        # 逻辑未删除值（默认：0，此处对应布尔类型false）
+        logic-not-delete-value: false
+        # 逻辑已删除值（默认：1，此处对应布尔类型true）
+        logic-delete-value: true
+
     type-aliases-package: cn.cloverclc.entity
 logging:
   file:

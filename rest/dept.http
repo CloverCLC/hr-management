@@ -26,7 +26,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "deptno": 17,
-  "dname": "研发部",
+  "deptno": 100,
+  "dname": "test",
   "loc": "邯郸"
 }
