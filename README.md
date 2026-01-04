@@ -14,3 +14,4 @@
 3. status字段是枚举类型,用cast as解决
    status=CAST(#{status} AS emp_status)
 4. 添加逻辑删除,以及一些字段的正常接收映射解析
+5. 解决typehandler不能使用的问题
