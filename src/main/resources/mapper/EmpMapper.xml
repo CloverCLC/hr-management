@@ -9,7 +9,6 @@
         <result column="totalIncome" property="totalIncome"/>
         <result column="salgrade" property="salgrade"/>
         <result column="contactInfo" property="contactInfo"/>
-        <!-- 指定自定义类型处理器，映射 List<String> -->
         <result column="subordinateNames" property="subordinateNames" typeHandler="cn.cloverclc.handler.StringListTypeHandler"/>
     </resultMap>
     <select id="selectEmployeePage" resultMap="EmployeeVOMap" >
@@ -26,14 +25,14 @@
                 ELSE e.emergency_contact ->> 'phone'
                 END AS contactInfo,
             -- 下级员工姓名(使用字符串聚合)
-            array_agg(sub_emp.ename) AS subordinateNames
+            array_to_string(array_agg(sub_emp.ename), ',', '') AS subordinateNames
         FROM emp e
                  LEFT JOIN dept d ON e.deptno = d.deptno
                  LEFT JOIN salgrade s ON e.sal BETWEEN s.losal AND s.hisal
                  LEFT JOIN bonus b ON e.empno = b.empno
             -- 关联下级员工
                  LEFT JOIN emp sub_emp ON e.empno = sub_emp.mgr AND sub_emp.ename IS NOT NULL
-            WHERE e.isdel = FALSE
+            WHERE e.deleted = FALSE
         GROUP BY e.empno, e.ename, d.dname, s.grade, e.mobile, e.emergency_contact
         ORDER BY e.empno
     </select>

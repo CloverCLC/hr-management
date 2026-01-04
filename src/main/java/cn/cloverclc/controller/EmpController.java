@@ -48,7 +48,7 @@ public class EmpController {
 
     }
 
-    @DeleteMapping("/del/{id}")
+    @PutMapping("/del/{id}")
     @LogRecord
     public Result<Void> delEmp(@PathVariable Integer id) {
         boolean result = empService.removeById(id);

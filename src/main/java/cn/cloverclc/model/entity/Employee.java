@@ -1,6 +1,7 @@
 package cn.cloverclc.model.entity;
 
 import cn.cloverclc.handler.EmpStatusTypeHandler;
+import cn.cloverclc.handler.JsonbTypeHandler;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
@@ -36,9 +37,10 @@ public class Employee {
     private Integer deptno;
     private String email;
     private String mobile;
-    @TableField(value ="emergency_contact",typeHandler = JacksonTypeHandler.class)
-    private String contact;
-    private Boolean isdel;
+    @TableField(value ="emergency_contact",typeHandler = JsonbTypeHandler.class)
+    private EmergencyContact contact;
+    @TableLogic
+    private Boolean deleted;
 
     @TableField(exist = false)
     private String dname;

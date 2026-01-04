@@ -753,3 +753,22 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: cn.cloverclc.han
 2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
 2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
 2026-01-04T21:57:17.665+08:00  INFO 85552 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：254 毫秒
+2026-01-04T21:58:42.865+08:00  INFO 91180 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 91180 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-04T21:58:42.869+08:00  INFO 91180 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-04T21:58:44.097+08:00  INFO 91180 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.503 seconds (process running for 1.86)
+2026-01-04T21:58:48.950+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-04T21:58:48.952+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:58:48.952+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:58:48.952+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-04T21:58:48.952+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-04T21:58:49.165+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-04T21:58:49.165+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-04T21:58:49.166+08:00  INFO 91180 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：215 毫秒
+2026-01-04T21:59:41.133+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/7566
+2026-01-04T21:59:41.135+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-04T21:59:41.135+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-04T21:59:41.135+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpById
+2026-01-04T21:59:41.135+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 方法参数：[7566]
+2026-01-04T21:59:41.156+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 正常返回
+2026-01-04T21:59:41.158+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpById 执行完毕
+2026-01-04T21:59:41.158+08:00  INFO 91180 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：25 毫秒
