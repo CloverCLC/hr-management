@@ -5,6 +5,8 @@ import cn.cloverclc.model.entity.Employee;
 
 import cn.cloverclc.common.Result;
 
+import cn.cloverclc.model.vo.DeptVO;
+import cn.cloverclc.model.vo.EmployeeVO;
 import cn.cloverclc.service.Impl.EmpServiceImpl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import jakarta.annotation.Resource;
@@ -70,17 +72,17 @@ public class EmpController {
     }
     @GetMapping("/page")
     @LogRecord
-    public Result<IPage<Employee>> getEmpPage(@RequestParam(defaultValue = "1") Integer current,
-                                              @RequestParam(defaultValue = "10") Integer size) {
-        IPage result = empService.selectEmployeePage(current, size);
+    public Result<IPage<EmployeeVO>> getEmpPage(@RequestParam(defaultValue = "1") Integer current,
+                                                @RequestParam(defaultValue = "10") Integer size) {
+        IPage<EmployeeVO> result = empService.selectEmployeePage(current, size);
         return Result.success(result);
     }
     @GetMapping("/bydept")
     @LogRecord
-    public Result<IPage<Employee>> getEmpByDept(@RequestParam(defaultValue = "1") Integer current,
+    public Result<IPage<DeptVO>> getEmpByDept(@RequestParam(defaultValue = "1") Integer current,
                                                 @RequestParam(defaultValue = "10") Integer size,
                                                 @RequestParam Integer deptno){
-        IPage result = empService.selectDeptPage(current, size,deptno);
+        IPage<DeptVO> result = empService.selectDeptPage(current, size,deptno);
         return Result.success(result);
     }
 

@@ -24,7 +24,7 @@
                  LEFT JOIN emp sub_emp ON e.empno = sub_emp.mgr AND sub_emp.ename IS NOT NULL
             WHERE e.deleted = FALSE
         GROUP BY e.empno, e.ename, d.dname, s.grade, e.mobile, e.emergency_contact
-        ORDER BY e.empno
+        ORDER BY e.empno ASC
     </select>
     <select id="selectEmployeeByDept" resultType="cn.cloverclc.model.vo.DeptVO">
         SELECT

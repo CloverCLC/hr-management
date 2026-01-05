@@ -375,3 +375,36 @@ java.lang.IllegalArgumentException: 无效的部门编号，无法删除未分�
 2026-01-05T14:48:33.724+08:00  INFO 45832 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
 2026-01-05T14:48:33.724+08:00  INFO 45832 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
 2026-01-05T14:48:33.724+08:00  INFO 45832 --- [http-nio-8080-exec-1] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：74 毫秒
+2026-01-05T15:11:08.583+08:00  INFO 43340 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 43340 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-05T15:11:08.584+08:00  INFO 43340 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-05T15:11:09.787+08:00  INFO 43340 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.466 seconds (process running for 1.802)
+2026-01-05T15:12:17.126+08:00  INFO 52316 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 52316 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-05T15:12:17.127+08:00  INFO 52316 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-05T15:12:18.355+08:00  INFO 52316 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.48 seconds (process running for 1.816)
+2026-01-05T15:14:00.076+08:00  INFO 4836 --- [main] cn.cloverclc.HrApp                       : Starting HrApp using Java 17.0.12 with PID 4836 (E:\Develop\code\hr-mangerage\target\classes started by CloverCLC in E:\Develop\code\hr-mangerage)
+2026-01-05T15:14:00.077+08:00  INFO 4836 --- [main] cn.cloverclc.HrApp                       : No active profile set, falling back to 1 default profile: "default"
+2026-01-05T15:14:01.301+08:00  INFO 4836 --- [main] cn.cloverclc.HrApp                       : Started HrApp in 1.494 seconds (process running for 1.824)
+2026-01-05T15:14:22.819+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/bydept
+2026-01-05T15:14:22.819+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-05T15:14:22.819+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-05T15:14:22.819+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpByDept
+2026-01-05T15:14:22.819+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10, 10]
+2026-01-05T15:14:22.869+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpByDept 正常返回
+2026-01-05T15:14:22.869+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpByDept 执行完毕
+2026-01-05T15:14:22.869+08:00  INFO 4836 --- [http-nio-8080-exec-2] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：50 毫秒
+2026-01-05T15:14:27.021+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/bydept
+2026-01-05T15:14:27.021+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-05T15:14:27.021+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-05T15:14:27.021+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpByDept
+2026-01-05T15:14:27.021+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10, 0]
+2026-01-05T15:14:27.028+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpByDept 正常返回
+2026-01-05T15:14:27.028+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpByDept 执行完毕
+2026-01-05T15:14:27.028+08:00  INFO 4836 --- [http-nio-8080-exec-3] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：7 毫秒
+2026-01-05T15:14:52.535+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 请求URL：http://localhost:8080/emp/page
+2026-01-05T15:14:52.535+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 请求方式：GET
+2026-01-05T15:14:52.535+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 目标类名：cn.cloverclc.controller.EmpController
+2026-01-05T15:14:52.535+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 目标方法名：getEmpPage
+2026-01-05T15:14:52.535+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 方法参数：[1, 10]
+2026-01-05T15:14:52.549+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 正常返回
+2026-01-05T15:14:52.549+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 目标方法 getEmpPage 执行完毕
+2026-01-05T15:14:52.549+08:00  INFO 4836 --- [http-nio-8080-exec-9] cn.cloverclc.aop.LogAspect               : 目标方法执行耗时：14 毫秒

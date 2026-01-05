@@ -29,6 +29,6 @@
             </if>
         </where>
         GROUP BY e.deptno, d.dname
-        ORDER BY e.deptno
+        ORDER BY e.deptno ASC
     </select>
 </mapper>
