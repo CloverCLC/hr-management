@@ -20,11 +20,6 @@ mybatis-plus:
       logic-delete-value: true
 
     type-aliases-package: cn.cloverclc.entity
-logging:
-  file:
-    name: logs/running.log
-  level:
-    root: warn
-    cn.cloverclc : info
+# 日志配置移至logback-spring.xml
 server:
   port: 8080
